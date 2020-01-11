@@ -1,0 +1,162 @@
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+<style>
+body,html{ height: 100%; width: 100%; margin:0; padding:0; }
+#map{ min-height: 500px; height: 100%; width: 100%; }
+.mapboxgl-popup {max-width: 400px;font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;}
+
+/* Legend tweaks */
+.legend {
+    background-color: #fff;
+    border-radius: 3px;
+    top: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    padding: 10px;
+    padding-right: 50px;
+    position: absolute;
+    right: 50px;
+    z-index: 1;
+}
+ 
+.legend h4 {
+    margin: 0 0 10px;
+}
+ 
+.legend div span {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin-right: 10px;
+    width: 10px;
+}
+
+/* Marker tweaks */
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup-content {
+  font: 400 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0;
+  width: 150px;
+}
+
+.mapboxgl-popup-content-wrapper {
+  padding: 1%;
+}
+
+.mapboxgl-popup-content h3 {
+  background: #91c949;
+  color: #fff;
+  margin: 0;
+  display: block;
+  padding: 10px;
+  border-radius: 3px 3px 0 0;
+  font-weight: 700;
+  margin-top: -15px;
+}
+
+.mapboxgl-popup-content p {
+  margin: 0;
+  display: block;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.mapboxgl-popup-content div {
+  padding: 10px;
+}
+
+.mapboxgl-container .leaflet-marker-icon {
+  cursor: pointer;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+  margin-top: 15px;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+  border-bottom-color: #91c949;
+}
+
+/* Fly tweaks */
+.map-overlay {
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+position: absolute;
+width: 200px;
+top: 0;
+left: 0;
+padding: 10px;
+}
+ 
+.map-overlay .map-overlay-inner {
+background-color: #fff;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
+padding: 10px;
+margin-bottom: 10px;
+}
+ 
+.map-overlay-inner fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+ 
+.map-overlay-inner fieldset:last-child {
+  margin: 0;
+}
+ 
+.map-overlay-inner select {
+  width: 100%;
+}
+ 
+.map-overlay-inner label {
+  display: block;
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+ 
+.map-overlay-inner button {
+  margin: 0 auto;
+  /*display: inline-block;*/
+  display: flex;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background-color: #91c949;
+  width: 100px;
+}
+ 
+.map-overlay-inner button:focus {
+  outline: none;
+}
+ 
+.map-overlay-inner button:hover {
+  box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+</style>
+
+<div id="map"></div>
+
+<div class="map-overlay top">
+  <div class="map-overlay-inner">
+    <fieldset>
+      <label>Select city</label>
+      <select id="city" name="city">
+        <option value="Yangon">Yangon</option>
+        <option value="Mandalay">Mandalay</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <button id="fly">FLY</button>
+    </fieldset>
+  </div>
+</div>
+
+<div id="state-legend" class="legend">
+    <div><span style="background-color: #2ecc71"></span>Family</div>
+    <div><span style="background-color: #f7dc6f"></span>Inlaw</div>
+    <div><span style="background-color: #ec7063"></span>Prospect</div>
+</div>
+
